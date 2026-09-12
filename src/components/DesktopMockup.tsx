@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLanguage } from '../stores/languageStore';
 
 interface DesktopMockupProps {
@@ -10,50 +10,20 @@ interface DesktopMockupProps {
 
 export const DesktopMockup: React.FC<DesktopMockupProps> = ({
   url = 'https://slimergy-landingpage.vercel.app/',
-  imageSrc,
+  imageSrc = '/projects/slimergy-landing/preview.webp',
   title,
   liveUrl,
 }) => {
   const [lang] = useLanguage();
   const effectiveLiveUrl = liveUrl || url;
-  const [viewMode, setViewMode] = useState<'live' | 'preview'>('live');
-  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   return (
     <div className="w-full flex flex-col items-center justify-center py-4 px-2 sm:px-4 overflow-hidden">
-      {/* Selector de modo: Interactivo en Vivo vs Captura Estática */}
-      <div className="flex items-center gap-2 mb-4 font-mono text-xs select-none">
-        <button
-          type="button"
-          onClick={() => setViewMode('live')}
-          className={`px-3.5 py-1.5 font-semibold text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
-            viewMode === 'live'
-              ? 'bg-sprout text-pine shadow-sm font-bold'
-              : 'bg-black/40 text-cream/70 hover:text-cream border border-cream/20'
-          }`}
-        >
-          <span>{lang === 'es' ? '[ EN VIVO // INTERACTIVO ]' : '[ LIVE // INTERACTIVE ]'}</span>
-        </button>
-        {imageSrc && (
-          <button
-            type="button"
-            onClick={() => setViewMode('preview')}
-            className={`px-3.5 py-1.5 font-semibold text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
-              viewMode === 'preview'
-                ? 'bg-radish text-cream shadow-sm font-bold'
-                : 'bg-black/40 text-cream/70 hover:text-cream border border-cream/20'
-            }`}
-          >
-            <span>{lang === 'es' ? '[ CAPTURA HD ]' : '[ HD CAPTURE ]'}</span>
-          </button>
-        )}
-      </div>
-
       {/* Marco de Laptop / Desktop estilo Ravyn */}
       <div className="relative w-full max-w-3xl bg-pine border-2 border-pine/90 rounded-2xl p-2 sm:p-2.5 shadow-2xl flex flex-col overflow-hidden">
         {/* Glow ambiental */}
         <div
-          className="absolute inset-0 -z-10 blur-3xl opacity-20 pointer-events-none rounded-2xl scale-95"
+          className="absolute inset-0 -z-10 blur-3xl opacity-25 pointer-events-none rounded-2xl scale-95"
           style={{ background: 'radial-gradient(circle, #E0436B 0%, #10342A 70%)' }}
         />
 
@@ -65,16 +35,22 @@ export const DesktopMockup: React.FC<DesktopMockupProps> = ({
             <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
           </div>
 
-          {/* Barra de dirección URL */}
-          <div className="flex-1 max-w-lg bg-cream/10 rounded-md h-5.5 flex items-center justify-between px-3 font-mono text-[10px] sm:text-[11px] text-cream/80 truncate">
+          {/* Barra de dirección URL clickeable */}
+          <a
+            href={effectiveLiveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={lang === 'es' ? 'Abrir sitio web en producción' : 'Open live website'}
+            className="flex-1 max-w-lg bg-cream/10 hover:bg-cream/15 transition-colors rounded-md h-5.5 flex items-center justify-between px-3 font-mono text-[10px] sm:text-[11px] text-cream/80 truncate cursor-pointer group"
+          >
             <div className="flex items-center gap-2 truncate">
               <span className="text-sprout text-[9px] font-bold shrink-0">HTTPS://</span>
-              <span className="truncate">{effectiveLiveUrl.replace(/^https?:\/\//, '')}</span>
+              <span className="truncate group-hover:text-cream">{effectiveLiveUrl.replace(/^https?:\/\//, '')}</span>
             </div>
             <span className="text-[9px] text-sprout uppercase tracking-wider font-semibold shrink-0 hidden sm:inline">
-              ● 200 OK
+              ● 200 OK ↗
             </span>
-          </div>
+          </a>
 
           {/* Enlace directo externo */}
           <a
@@ -82,53 +58,57 @@ export const DesktopMockup: React.FC<DesktopMockupProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             title={lang === 'es' ? 'Abrir en pestaña nueva' : 'Open in new tab'}
-            className="text-cream/70 hover:text-radish transition-colors font-mono text-xs"
+            className="text-cream/70 hover:text-radish transition-colors font-mono text-xs p-1"
           >
             <span>↗</span>
           </a>
         </div>
 
-        {/* Pantalla interior interactiva */}
-        <div className="w-full h-[320px] sm:h-[440px] md:h-[500px] bg-black rounded-xl overflow-hidden relative">
-          {viewMode === 'live' ? (
-            <div className="relative w-full h-full bg-white">
-              {!iframeLoaded && (
-                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-pine font-mono text-cream gap-2">
-                  <div className="w-6 h-6 border-2 border-sprout border-t-transparent rounded-full animate-spin" />
-                  <span className="text-xs text-cream/80 uppercase tracking-wider">
-                    {lang === 'es' ? 'Cargando Landing en Vivo...' : 'Loading Live Landing...'}
-                  </span>
-                </div>
-              )}
-              <iframe
-                src={effectiveLiveUrl}
-                title={title}
-                onLoad={() => setIframeLoaded(true)}
-                className="w-full h-full border-0 block"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                loading="lazy"
-              />
-            </div>
+        {/* Pantalla interior con captura HD y overlay interactivo al hacer clic */}
+        <a
+          href={effectiveLiveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative w-full h-[260px] sm:h-[400px] md:h-[460px] bg-black rounded-xl overflow-hidden cursor-pointer block"
+        >
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={title}
+              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
+            />
           ) : (
-            imageSrc ? (
-              <img
-                src={imageSrc}
-                alt={title}
-                className="w-full h-full object-cover object-top"
-              />
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center text-cream font-mono text-xs">
-                <span>{title}</span>
-              </div>
-            )
+            <div className="w-full h-full flex flex-col items-center justify-center text-cream font-mono text-xs">
+              <span>{title}</span>
+            </div>
           )}
-        </div>
+
+          {/* Overlay hover indicando clic para abrir */}
+          <div className="absolute inset-0 bg-pine/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center gap-2 backdrop-blur-xs text-cream font-mono select-none">
+            <span className="px-4 py-2 bg-radish text-cream font-bold text-xs uppercase tracking-wider shadow-lg flex items-center gap-2">
+              <span>{lang === 'es' ? '[ Abrir Sitio Web en Producción ]' : '[ Open Live Website ]'}</span>
+              <span>↗</span>
+            </span>
+            <span className="text-[10px] text-cream/70 tracking-widest uppercase">
+              {effectiveLiveUrl.replace(/^https?:\/\//, '')}
+            </span>
+          </div>
+        </a>
+      </div>
+
+      {/* Nota técnica de entorno externo */}
+      <div className="mt-3 flex items-center gap-2 text-cream/50 font-mono text-[10px] uppercase tracking-wider select-none">
+        <span className="w-1.5 h-1.5 rounded-full bg-sprout animate-pulse" />
+        <span>
+          {lang === 'es'
+            ? '// SITIO EN PRODUCCIÓN ACTIVO EN VERCEL · DESPLIEGUE DIRECTO'
+            : '// LIVE PRODUCTION DEPLOYMENT ON VERCEL · DIRECT ACCESS'}
+        </span>
       </div>
 
       {/* Botón directo de apertura web */}
       {effectiveLiveUrl && (
-        <div className="mt-5 flex justify-center font-mono text-xs">
+        <div className="mt-4 flex justify-center font-mono text-xs">
           <a
             href={effectiveLiveUrl}
             target="_blank"
