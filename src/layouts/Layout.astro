@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import { ReadingProgressBar } from '../components/ReadingProgressBar';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Said Alejandro Hernández // Software Engineer & Game Developer',
+  description = 'Portfolio técnico de Said Alejandro Hernández. Arquitecturas backend, interfaces interactivas y simulaciones en Godot.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="bg-cream text-pine selection:bg-radish selection:text-cream">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/brand/symbol-pine.png" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-cream text-pine antialiased font-sans">
+    <ReadingProgressBar client:load />
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,61 @@
+---
+import { LanguageSwitch } from './LanguageSwitch';
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 w-full border-b border-pine/15 bg-cream/95 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between font-mono text-xs">
+    <!-- Identificador de marca / terminal: clic lleva suavemente a Home -->
+    <a href="#home" id="nav-brand-link" class="flex items-center gap-1.5 sm:gap-2 group cursor-pointer select-none shrink-0">
+      <span class="font-bold text-pine tracking-wider uppercase group-hover:text-radish transition-colors text-xs sm:text-xs">
+        SAID HERNÁNDEZ
+      </span>
+      <span class="text-pine/30 hidden sm:inline">/</span>
+      <span class="text-radish font-semibold hidden sm:inline">[@dev.diavlo]</span>
+    </a>
+
+    <!-- Navegacion tecnica, boton Ravyn y switch de idioma -->
+    <div class="flex items-center gap-2 sm:gap-6 shrink-0">
+      <nav class="hidden md:flex items-center gap-5 text-muted font-medium">
+        <a href="#proyectos" class="hover:text-radish transition-colors">
+          // PROYECTOS
+        </a>
+        <a href="#stack" class="hover:text-radish transition-colors">
+          // STACK
+        </a>
+        <a href="#contacto" class="hover:text-radish transition-colors">
+          // CONTACTO
+        </a>
+      </nav>
+
+      <!-- Botón directo a Ravyn Studio: compacto en móvil "[ RAVYN ↗ ]" y completo en desktop -->
+      <a
+        href="https://ravynstudio.mx"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-2 sm:px-2.5 py-1 border border-radish/40 text-radish hover:bg-radish hover:text-cream transition-all font-semibold tracking-wider uppercase text-[10px] sm:text-[11px] inline-flex items-center gap-1 shrink-0"
+      >
+        <span class="sm:hidden">[ RAVYN ↗ ]</span>
+        <span class="hidden sm:inline">[ RAVYN STUDIO ↗ ]</span>
+      </a>
+
+      <!-- Selector de idioma ES / EN -->
+      <div class="shrink-0">
+        <LanguageSwitch client:load />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Manejo de clic en logo para desplazamiento fluido a la cima
+  const brandLink = document.getElementById('nav-brand-link');
+  if (brandLink) {
+    brandLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>

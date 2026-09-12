@@ -1,0 +1,73 @@
+---
+interface Props {
+  githubUsername?: string;
+  email?: string;
+}
+
+const {
+  githubUsername = "SaidHdz",
+  email = "SaidDino01@gmail.com",
+} = Astro.props;
+---
+
+<footer class="pt-14 pb-20 font-mono" id="contacto">
+  <div class="flex items-center justify-between text-xs text-muted mb-8 uppercase tracking-wider">
+    <div class="flex items-center gap-3">
+      <span class="text-pine font-semibold">[ 04 // DISPONIBILIDAD Y CONTACTO ]</span>
+      <span class="text-pine/20">────────────────</span>
+    </div>
+    <span class="text-radish text-[11px] hidden sm:inline">// DISPONIBLE PARA PROYECTOS</span>
+  </div>
+
+  <div class="border border-pine/20 bg-cream/70 p-6 md:p-10">
+    <p class="text-xs uppercase tracking-widest text-muted mb-4">
+      // CANALES DIRECTOS DE COMUNICACIÓN
+    </p>
+
+    <!-- Enlaces de texto masivos estilo terminal cruda -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-xl sm:text-2xl md:text-3xl font-bold text-pine">
+      <a
+        href={`https://github.com/${githubUsername}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-radish transition-colors inline-flex items-center gap-2 group"
+      >
+        <span>GitHub</span>
+        <span class="text-xs font-normal text-muted group-hover:text-radish">[{githubUsername}]</span>
+        <span class="text-base text-muted group-hover:text-radish group-hover:translate-x-0.5 transition-transform">↗</span>
+      </a>
+
+      <span class="hidden sm:inline text-pine/30 text-xl font-normal">/</span>
+
+      <a
+        href="https://www.linkedin.com/in/saidhdz"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-radish transition-colors inline-flex items-center gap-2 group"
+      >
+        <span>LinkedIn</span>
+        <span class="text-base text-muted group-hover:text-radish group-hover:translate-x-0.5 transition-transform">↗</span>
+      </a>
+
+      <span class="hidden sm:inline text-pine/30 text-xl font-normal">/</span>
+
+      <a
+        href={`mailto:${email}`}
+        class="hover:text-radish transition-colors inline-flex items-center gap-2 group"
+      >
+        <span>Email</span>
+        <span class="text-xs font-normal text-muted group-hover:text-radish">[{email}]</span>
+        <span class="text-base text-muted group-hover:text-radish group-hover:translate-x-0.5 transition-transform">↗</span>
+      </a>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-pine/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-muted">
+      <div>
+        <span>SAID ALEJANDRO HERNÁNDEZ // REYNOSA, TAM. MÉXICO</span>
+      </div>
+      <div>
+        <span>PORTFOLIO_ASTRO_TAILWIND_V4 // BUILD: 2026.09</span>
+      </div>
+    </div>
+  </div>
+</footer>

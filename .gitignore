@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+
+# Astro cache and types
+.astro/
+
+# Environment variables
+.env
+.env.production
+.env.local
+
+# Zip files used for demo extraction
+public/demos/*.zip
+
+# Operating System files
+.DS_Store
+Thumbs.db
+Desktop.ini

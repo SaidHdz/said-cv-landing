@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import { Hero } from '../components/Hero';
+import { Manifesto } from '../components/Manifesto';
+import { ProjectTableIsland } from '../components/ProjectTableIsland';
+import { TechStack } from '../components/TechStack';
+import { Footer } from '../components/Footer';
+---
+
+<Layout>
+  <Navbar />
+  <main class="max-w-5xl mx-auto px-6 sm:px-8 pt-16 sm:pt-20 pb-6 md:pb-12">
+    <Hero client:load />
+    <Manifesto client:load />
+    <ProjectTableIsland client:load />
+    <TechStack client:load />
+    <Footer client:load />
+  </main>
+</Layout>

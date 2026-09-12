@@ -1,0 +1,57 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<section class={`py-16 border-b border-pine/15 ${className}`} id="manifiesto">
+  <!-- Header de seccion -->
+  <div class="flex items-center justify-between font-mono text-xs text-muted mb-8 uppercase tracking-wider">
+    <div class="flex items-center gap-3">
+      <span class="text-pine font-semibold">[ 01 // MANIFIESTO ]</span>
+      <span class="text-pine/20">──────────────</span>
+    </div>
+    <span class="text-radish font-mono text-[11px] hidden sm:inline">// PRINCIPIOS DE INGENIERÍA</span>
+  </div>
+
+  <div class="space-y-8 max-w-4xl">
+    <!-- Declaración Principal -->
+    <h2 class="font-display text-2xl sm:text-3xl md:text-4xl text-pine font-semibold leading-tight tracking-tight text-left">
+      Construyo software con rigor arquitectónico: desde sistemas web escalables y telemetría IoT, hasta experiencias móviles nativas y motores de juego en Godot.
+    </h2>
+
+    <!-- Declaración Secundaria / Contexto -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 text-pine/85 font-sans text-base sm:text-lg leading-relaxed">
+      <div class="md:col-span-6 space-y-4">
+        <p>
+          Estudiante de <strong class="text-pine font-semibold">9no semestre de Ingeniería en TICs en el Instituto Tecnológico de Reynosa</strong>, desarrollo bajo la convicción de que el código funcional en producción supera siempre a las presentaciones estáticas y los mockups conceptuales.
+        </p>
+      </div>
+      <div class="md:col-span-6 space-y-4">
+        <p>
+          Cada sistema que diseño, ya sea un pipeline clínico para médicos, una plataforma B2B de monitoreo energético o un shooter 3D, está optimizado para velocidad, determinismo y mantenibilidad a largo plazo.
+        </p>
+      </div>
+    </div>
+
+    <!-- Metadatos y Criterios tipográficos crudos -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-pine/10 font-mono text-xs">
+      <div class="space-y-1.5">
+        <span class="text-radish font-semibold uppercase tracking-wider block">// 01. ENFOQUE</span>
+        <p class="text-pine/85 leading-relaxed">Sistemas en producción, alta concurrencia y telemetría en tiempo real.</p>
+      </div>
+
+      <div class="space-y-1.5 sm:border-l sm:border-pine/15 sm:pl-6">
+        <span class="text-pine/70 font-semibold uppercase tracking-wider block">// 02. CRITERIO</span>
+        <p class="text-pine/85 leading-relaxed">Cero deuda técnica accidental y optimización nativa por hardware.</p>
+      </div>
+
+      <div class="space-y-1.5 sm:border-l sm:border-pine/15 sm:pl-6">
+        <span class="text-radish font-semibold uppercase tracking-wider block">// 03. BASE</span>
+        <p class="text-pine/85 leading-relaxed">Instituto Tecnológico de Reynosa · Reynosa, Tamaulipas, México.</p>
+      </div>
+    </div>
+  </div>
+</section>

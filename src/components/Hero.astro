@@ -1,0 +1,54 @@
+---
+interface Props {
+  tag?: string;
+  name?: string;
+  title?: string;
+}
+
+const {
+  tag = "@dev.diablo",
+  name = "SAID ALEJANDRO HERNÁNDEZ",
+  title = "Ingeniero de Software Full-Stack & Game Developer.",
+} = Astro.props;
+---
+
+<header class="pt-6 sm:pt-14 pb-12 sm:pb-14 border-b border-pine/15">
+  <div class="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-xs mb-5">
+    <span class="text-radish font-bold">[{tag}]</span>
+    <span class="text-pine/30 hidden sm:inline">/</span>
+    <span class="tracking-wider text-muted uppercase">9no Semestre // Ing. en TICs</span>
+    <span class="text-pine/30 hidden sm:inline">/</span>
+    <span class="text-pine/60">Tec de Reynosa</span>
+  </div>
+
+  <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-pine leading-[0.98] uppercase">
+    {name}
+  </h1>
+
+  <div class="mt-6 max-w-3xl space-y-2">
+    <p class="font-mono text-sm sm:text-base md:text-lg text-pine font-medium leading-relaxed">
+      {title}
+    </p>
+    <p class="font-mono text-xs sm:text-sm text-radish font-medium">
+      Estudiante de 9no semestre de Ingeniería en Tecnologías de la Información y Comunicaciones en el Instituto Tecnológico de Reynosa (TecNM).
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-4 mt-8 pt-2">
+    <a
+      href="#proyectos"
+      class="font-mono text-xs sm:text-sm uppercase tracking-wider px-5 py-3 bg-pine text-cream border border-pine hover:bg-pine/90 transition-all font-medium inline-flex items-center gap-2"
+    >
+      <span>[ Desplegar Proyectos ]</span>
+      <span class="text-sprout text-xs">↓</span>
+    </a>
+
+    <a
+      href="#contacto"
+      class="font-mono text-xs sm:text-sm uppercase tracking-wider px-5 py-3 bg-transparent text-pine border border-pine/40 hover:border-pine hover:bg-cream-2/70 transition-all font-medium inline-flex items-center gap-2"
+    >
+      <span>[ PDF / Curriculum Vitae ]</span>
+      <span class="text-muted text-xs">↗</span>
+    </a>
+  </div>
+</header>

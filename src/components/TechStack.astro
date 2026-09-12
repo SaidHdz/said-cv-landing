@@ -1,0 +1,78 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+
+const CATEGORIES = [
+  {
+    code: "01",
+    name: "FRONTEND & UI",
+    items: ["React", "TypeScript", "Astro", "Tailwind CSS v4", "CSS Avanzado", "Diseño Web & UI"]
+  },
+  {
+    code: "02",
+    name: "BACKEND & SISTEMAS",
+    items: ["Python", "C++", "Supabase", "WebAssembly", "ESP32 / IoT", "Arquitectura REST"]
+  },
+  {
+    code: "03",
+    name: "VIDEOJUEGOS & 3D",
+    items: ["Godot 4", "GDScript", "Físicas 2D / 3D", "Simulaciones Wasm", "Game Architecture"]
+  },
+  {
+    code: "04",
+    name: "MÓVIL & WORKFLOWS",
+    items: ["Expo (React Native)", "n8n", "Automatizaciones", "Git & CI/CD"]
+  }
+];
+---
+
+<section class={`py-14 border-b border-pine/15 ${className}`} id="stack">
+  <div class="flex items-center justify-between font-mono text-xs text-muted mb-6 uppercase tracking-wider">
+    <div class="flex items-center gap-3">
+      <span class="text-pine font-semibold">[ 03 // STACK TÉCNICO ]</span>
+      <span class="text-pine/20">────────────────</span>
+    </div>
+    <span class="text-radish font-mono text-[11px] hidden sm:inline">// LENGUAJES Y PLATAFORMAS</span>
+  </div>
+
+  <div class="border border-pine/20 bg-cream shadow-sm overflow-hidden">
+    <div class="px-5 py-3.5 border-b border-pine/15 bg-cream-2/80 font-mono text-xs flex items-center justify-between">
+      <span class="text-radish font-bold uppercase tracking-wider">// DOMINIOS Y HERRAMIENTAS ACTIVAS</span>
+      <span class="text-pine/60 text-[11px]">[ VERIFICADO ]</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-pine/15">
+      {CATEGORIES.map((cat) => (
+        <div class="flex flex-col bg-cream/60 hover:bg-cream-2/40 transition-colors">
+          <div class="px-5 py-3 border-b border-pine/15 bg-cream-2/50 flex items-center justify-between font-mono text-xs">
+            <span class="text-radish font-bold">[{cat.code}]</span>
+            <span class="text-pine font-bold uppercase tracking-wider text-[11px]">
+              {cat.name}
+            </span>
+          </div>
+
+          <ul class="p-5 space-y-3 font-mono text-xs sm:text-sm flex-1">
+            {cat.items.map((item) => (
+              <li class="flex items-baseline gap-2.5 text-pine group/item">
+                <span class="text-pine/30 text-xs font-mono group-hover/item:text-radish transition-colors">
+                  /
+                </span>
+                <span class="font-medium text-pine/90 group-hover/item:text-radish transition-colors tracking-tight">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="px-5 py-3.5 border-t border-pine/15 bg-cream-2/70 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted">
+      <span>PARADIGMAS: Reactivo · Concurrente · Event-Driven · Orientado a Componentes</span>
+      <span>ENTORNOS: Node.js · Emscripten (WebAssembly) · GCC / Clang</span>
+    </div>
+  </div>
+</section>
