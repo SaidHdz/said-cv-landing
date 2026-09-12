@@ -4,6 +4,7 @@ import type { ProjectTranslation } from '../locales/translations';
 import { TRANSLATIONS } from '../locales/translations';
 import { useLanguage } from '../stores/languageStore';
 import { PhoneMockup } from './PhoneMockup';
+import { DesktopMockup } from './DesktopMockup';
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -185,12 +186,13 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               </div>
 
               <div>
-                {/* CASO 1: Apps Moviles (Klino, Shield Sense, Slimergy) -> Mockup de Celular Vertical */}
+                {/* CASO 1: Apps Moviles (Klino, Shield Sense, Slimergy) -> Mockup de Celular Vertical estilo Ravyn con imagenes */}
                 {isMobileApp ? (
-                  <div className="w-full bg-pine/95 py-2 overflow-hidden">
+                  <div className="w-full bg-pine/95 py-4 overflow-hidden">
                     <PhoneMockup
                       projectId={project.id}
                       title={project.title}
+                      images={project.images}
                       liveUrl={project.liveUrl}
                       repoUrl={project.repoUrl}
                     />
@@ -233,42 +235,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                     )}
                   </div>
                 ) : (
-                  /* CASO 3: Proyectos Web (Slimergy Landing) */
-                  <div className="w-full bg-pine/95 p-4 sm:p-8 flex flex-col items-center justify-center text-center text-cream font-mono overflow-hidden">
-                    <div className="w-full max-w-2xl border border-cream/20 bg-pine/80 shadow-2xl overflow-hidden">
-                      {/* Barra superior de navegador técnico */}
-                      <div className="px-4 py-2.5 bg-black/40 border-b border-cream/15 flex items-center justify-between text-[11px] text-cream/70">
-                        <div className="flex items-center gap-2 min-w-0">
-                          <span className="text-radish font-bold shrink-0">// PROD</span>
-                          <span className="text-cream/30">/</span>
-                          <span className="truncate max-w-[180px] sm:max-w-xs">{project.liveUrl}</span>
-                        </div>
-                        <span className="text-[10px] text-sprout uppercase tracking-wider font-semibold shrink-0">200 OK</span>
-                      </div>
-
-                      {/* Cuerpo de la tarjeta de lanzamiento */}
-                      <div className="p-6 sm:p-10 flex flex-col items-center justify-center space-y-4">
-                        <div className="font-display text-2xl sm:text-3xl font-bold text-cream break-words">
-                          {project.title}
-                        </div>
-                        <p className="font-mono text-xs text-cream/70 max-w-lg leading-relaxed">
-                          {project.stack}
-                        </p>
-
-                        <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-                          {project.liveUrl && (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="font-mono text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 bg-radish text-cream hover:bg-radish/90 transition-all font-semibold inline-flex items-center gap-2 shadow-sm"
-                            >
-                              <span>{t.liveLink}</span>
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                  /* CASO 3: Proyectos Web (Slimergy Landing) -> Desktop Mockup estilo Ravyn con imagen */
+                  <div className="w-full bg-pine/95 py-4 overflow-hidden">
+                    <DesktopMockup
+                      url={project.liveUrl || 'https://slimergy-landingpage.vercel.app/'}
+                      imageSrc={project.images?.[0]}
+                      title={project.title}
+                      liveUrl={project.liveUrl}
+                    />
                   </div>
                 )}
               </div>

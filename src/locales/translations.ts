@@ -15,6 +15,7 @@ export interface ProjectTranslation {
   demoUrl?: string;
   repoUrl?: string;
   liveUrl?: string;
+  images?: string[];
 }
 
 export interface TechCategory {
@@ -216,6 +217,12 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoUrl: 'https://ravynstudio.mx/klino',
         repoUrl: 'https://github.com/SaidHdz/Klino',
         liveUrl: 'https://ravynstudio.mx/klino',
+        images: [
+          '/projects/klino/Home.jpg',
+          '/projects/klino/Expedientes.jpg',
+          '/projects/klino/Hardware.jpg',
+          '/projects/klino/Ajustes.jpg',
+        ],
       },
       {
         id: 'slimergy',
@@ -230,6 +237,11 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'expo',
         isMobileApp: true,
         repoUrl: 'https://github.com/SaidHdz/slimergy',
+        images: [
+          '/projects/slimergy/home_despues_slimergy.jpeg',
+          '/projects/slimergy/cuartos__despues_slimergy.jpeg',
+          '/projects/slimergy/conifg_despues_slimergy.jpeg',
+        ],
       },
       {
         id: 'slimergy-landing',
@@ -244,6 +256,9 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'external',
         isMobileApp: false,
         liveUrl: 'https://slimergy-landingpage.vercel.app/',
+        images: [
+          '/projects/slimergy-landing/preview.webp',
+        ],
       },
       {
         id: 'shield-sense',
@@ -258,6 +273,11 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'expo',
         isMobileApp: true,
         repoUrl: 'https://github.com/SaidHdz',
+        images: [
+          '/projects/shield-sense/Home.jpg',
+          '/projects/shield-sense/Alertas.jpg',
+          '/projects/shield-sense/Ajustes.jpg',
+        ],
       },
       {
         id: 'gun-bling',
@@ -404,6 +424,12 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoUrl: 'https://ravynstudio.mx/klino',
         repoUrl: 'https://github.com/SaidHdz/Klino',
         liveUrl: 'https://ravynstudio.mx/klino',
+        images: [
+          '/projects/klino/Home.jpg',
+          '/projects/klino/Expedientes.jpg',
+          '/projects/klino/Hardware.jpg',
+          '/projects/klino/Ajustes.jpg',
+        ],
       },
       {
         id: 'slimergy',
@@ -418,6 +444,11 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'expo',
         isMobileApp: true,
         repoUrl: 'https://github.com/SaidHdz/slimergy',
+        images: [
+          '/projects/slimergy/home_despues_slimergy.jpeg',
+          '/projects/slimergy/cuartos__despues_slimergy.jpeg',
+          '/projects/slimergy/conifg_despues_slimergy.jpeg',
+        ],
       },
       {
         id: 'slimergy-landing',
@@ -432,6 +463,9 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'external',
         isMobileApp: false,
         liveUrl: 'https://slimergy-landingpage.vercel.app/',
+        images: [
+          '/projects/slimergy-landing/preview.webp',
+        ],
       },
       {
         id: 'shield-sense',
@@ -446,6 +480,11 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'expo',
         isMobileApp: true,
         repoUrl: 'https://github.com/SaidHdz',
+        images: [
+          '/projects/shield-sense/Home.jpg',
+          '/projects/shield-sense/Alertas.jpg',
+          '/projects/shield-sense/Ajustes.jpg',
+        ],
       },
       {
         id: 'gun-bling',
