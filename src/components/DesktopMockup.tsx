@@ -97,8 +97,7 @@ export const DesktopMockup: React.FC<DesktopMockupProps> = ({
       </div>
 
       {/* Nota técnica de entorno externo */}
-      <div className="mt-3 flex items-center gap-2 text-cream/50 font-mono text-[10px] uppercase tracking-wider select-none">
-        <span className="w-1.5 h-1.5 rounded-full bg-sprout animate-pulse" />
+      <div className="mt-3 flex items-center justify-center text-cream/50 font-mono text-[10px] uppercase tracking-wider select-none text-center">
         <span>
           {lang === 'es'
             ? '// SITIO EN PRODUCCIÓN ACTIVO EN VERCEL · DESPLIEGUE DIRECTO'
