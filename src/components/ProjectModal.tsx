@@ -27,21 +27,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     setIsDemoLoaded(false);
   }, [project, isOpen]);
 
-  // Bloqueo total de scroll en body y html para evitar deslizamiento de fondo
+  // Bloqueo de scroll estático sin alterar la posición de la ventana ni disparar animaciones
   useEffect(() => {
     if (!isOpen) return;
 
-    const scrollY = window.scrollY;
-    const originalBodyPosition = document.body.style.position;
-    const originalBodyTop = document.body.style.top;
-    const originalBodyWidth = document.body.style.width;
     const originalBodyOverflow = document.body.style.overflow;
     const originalHtmlOverflow = document.documentElement.style.overflow;
 
-    // Fijar la posición del body exactamente donde estaba
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
+    // Congelar el scroll en html y body directamente en su coordenada actual
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
@@ -54,12 +47,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.position = originalBodyPosition;
-      document.body.style.top = originalBodyTop;
-      document.body.style.width = originalBodyWidth;
       document.body.style.overflow = originalBodyOverflow;
       document.documentElement.style.overflow = originalHtmlOverflow;
-      window.scrollTo(0, scrollY);
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
