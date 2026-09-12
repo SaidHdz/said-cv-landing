@@ -15,6 +15,7 @@ export interface ProjectTranslation {
   demoUrl?: string;
   repoUrl?: string;
   liveUrl?: string;
+  landingUrl?: string;
   images?: string[];
 }
 
@@ -218,10 +219,11 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         repoUrl: 'https://github.com/SaidHdz/Klino',
         liveUrl: 'https://ravynstudio.mx/klino',
         images: [
-          '/projects/klino/Home.jpg',
-          '/projects/klino/Expedientes.jpg',
-          '/projects/klino/Hardware.jpg',
-          '/projects/klino/Ajustes.jpg',
+          '/projects/klino/login.jpeg',
+          '/projects/klino/home.jpeg',
+          '/projects/klino/expedientes.jpeg',
+          '/projects/klino/calendario.jpeg',
+          '/projects/klino/ajustes.jpeg',
         ],
       },
       {
@@ -237,10 +239,14 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'expo',
         isMobileApp: true,
         repoUrl: 'https://github.com/SaidHdz/slimergy',
+        landingUrl: 'https://slimergy-landingpage.vercel.app/',
         images: [
           '/projects/slimergy/home_despues_slimergy.jpeg',
+          '/projects/slimergy/home_antes_slimergy.jpeg',
           '/projects/slimergy/cuartos__despues_slimergy.jpeg',
+          '/projects/slimergy/cuartos__antes_slimergy.jpeg',
           '/projects/slimergy/conifg_despues_slimergy.jpeg',
+          '/projects/slimergy/config_antes_slimergy.jpeg',
         ],
       },
       {
@@ -425,10 +431,11 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         repoUrl: 'https://github.com/SaidHdz/Klino',
         liveUrl: 'https://ravynstudio.mx/klino',
         images: [
-          '/projects/klino/Home.jpg',
-          '/projects/klino/Expedientes.jpg',
-          '/projects/klino/Hardware.jpg',
-          '/projects/klino/Ajustes.jpg',
+          '/projects/klino/login.jpeg',
+          '/projects/klino/home.jpeg',
+          '/projects/klino/expedientes.jpeg',
+          '/projects/klino/calendario.jpeg',
+          '/projects/klino/ajustes.jpeg',
         ],
       },
       {
@@ -444,10 +451,14 @@ export const TRANSLATIONS: Record<Language, SiteTranslations> = {
         demoType: 'expo',
         isMobileApp: true,
         repoUrl: 'https://github.com/SaidHdz/slimergy',
+        landingUrl: 'https://slimergy-landingpage.vercel.app/',
         images: [
           '/projects/slimergy/home_despues_slimergy.jpeg',
+          '/projects/slimergy/home_antes_slimergy.jpeg',
           '/projects/slimergy/cuartos__despues_slimergy.jpeg',
+          '/projects/slimergy/cuartos__antes_slimergy.jpeg',
           '/projects/slimergy/conifg_despues_slimergy.jpeg',
+          '/projects/slimergy/config_antes_slimergy.jpeg',
         ],
       },
       {

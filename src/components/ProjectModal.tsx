@@ -195,6 +195,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                       images={project.images}
                       liveUrl={project.liveUrl}
                       repoUrl={project.repoUrl}
+                      landingUrl={project.landingUrl}
                     />
                   </div>
                 ) : isGodotProject ? (
